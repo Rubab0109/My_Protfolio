@@ -345,7 +345,7 @@ a {
 .image-placeholder {
     width: 280px;
     height: 280px;
-    background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+    background: linear-gradient(200deg, var(--secondary-color), var(--accent-color));
     border-radius: 20px;
     display: flex;
     align-items: center;
@@ -990,85 +990,90 @@ a {
         width: 100%;
     }
 }
-/* ===== Cutout Profile Picture - Professional Creative Look ===== */
 
+
+/* ===== FINAL FIX: Hero Profile Card - Cutout Image Fully Inside Box ===== */
 .hero-image {
     position: relative;
     display: flex;
     justify-content: center;
-    align-items: flex-end;
-    min-height: 430px;
+    align-items: center;
+    min-height: 520px;
+    transform: translateY(-25px);
+    animation: slideInRight 0.8s ease-out;
 }
 
 .image-placeholder {
-    width: 330px;
-    height: 360px;
-    background: rgba(255, 255, 255, 0.35);
-    border-radius: 32px;
+    width: 430px;
+    height: 460px;
+    position: relative;
     overflow: hidden;
+    border-radius: 38px;
+    background: linear-gradient(135deg, rgba(234, 245, 255, 0.95), rgba(135, 206, 235, 0.78));
+    box-shadow: 0 28px 65px rgba(0, 102, 204, 0.20);
+    border: 1px solid rgba(255, 255, 255, 0.75);
     display: flex;
     align-items: flex-end;
     justify-content: center;
-    position: relative;
-    backdrop-filter: blur(6px);
+    padding: 0;
+    animation: none;
 }
 
-/* soft circular design behind the cutout */
+/* soft circle design inside the box */
 .image-placeholder::before {
     content: "";
     position: absolute;
-    width: 280px;
-    height: 280px;
-    bottom: 55px;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    border: 2px solid rgba(0, 102, 204, 0.14);
+    bottom: 105px;
     left: 50%;
     transform: translateX(-50%);
-    border-radius: 50%;
-    border: 2px solid rgba(0, 102, 204, 0.18);
-    box-shadow: 0 0 0 12px rgba(135, 206, 235, 0.10);
-    z-index: 0;
+    z-index: 1;
+    pointer-events: none;
 }
 
-/* small code badge */
+/* small developer badge */
 .image-placeholder::after {
     content: "</>";
     position: absolute;
-    top: 28px;
-    right: 35px;
+    top: 26px;
+    right: 28px;
     padding: 8px 14px;
-    border-radius: 30px;
-    background: rgba(255, 255, 255, 0.85);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.88);
     color: #0066cc;
     font-size: 0.95rem;
-    font-weight: 700;
+    font-weight: 800;
+    line-height: 1;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-    z-index: 3;
+    z-index: 4;
 }
 
-/* actual cutout picture */
 .profile-img {
     position: relative;
     z-index: 2;
-    height: 200%;
+    height: 100%;
     width: auto;
     max-width: 100%;
     object-fit: contain;
     object-position: bottom center;
     display: block;
     background: transparent;
-    filter:
-        drop-shadow(0 16px 28px rgba(0, 0, 0, 0.18))
-        drop-shadow(0 0 10px rgba(0, 102, 204, 0.12));
+    transform: none;
+    filter: drop-shadow(0 18px 28px rgba(0, 0, 0, 0.20));
 }
 
-/* decorative elements around picture */
+/* decorative dots around the profile card */
 .hero-image::before {
     content: "";
     position: absolute;
     width: 70px;
     height: 70px;
-    top: 35px;
+    top: 45px;
     left: 35px;
-    border: 2px dashed rgba(0, 102, 204, 0.25);
+    border: 2px dashed rgba(0, 102, 204, 0.22);
     border-radius: 18px;
     z-index: 0;
 }
@@ -1079,35 +1084,69 @@ a {
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    background: #87ceeb;
+    background: #0066cc;
     right: 55px;
-    bottom: 80px;
-    box-shadow:
-        -22px -18px 0 #0066cc,
-        18px -28px 0 #b7dcff;
+    bottom: 120px;
+    box-shadow: 28px -14px 0 #87ceeb, 52px 12px 0 #5bb7e8;
     z-index: 0;
+    opacity: 0.85;
 }
 
 @media (max-width: 768px) {
     .hero-image {
-        min-height: 340px;
+        order: -1;
+        min-height: 390px;
+        transform: translateY(-10px);
     }
 
     .image-placeholder {
-        width: 280px;
-        height: 320px;
+        width: 300px;
+        height: 340px;
+        border-radius: 30px;
     }
 
     .image-placeholder::before {
-        width: 210px;
-        height: 210px;
-        bottom: 45px;
+        width: 220px;
+        height: 220px;
+        bottom: 75px;
     }
 
     .image-placeholder::after {
-        top: 16px;
+        top: 18px;
         right: 18px;
         font-size: 0.8rem;
-        padding: 6px 12px;
+        padding: 7px 12px;
+    }
+
+    .profile-img {
+        height: 100%;
+        max-width: 100%;
+        transform: none;
+    }
+
+    .hero-image::before {
+        width: 52px;
+        height: 52px;
+        top: 25px;
+        left: 18px;
+    }
+
+    .hero-image::after {
+        right: 28px;
+        bottom: 95px;
+    }
+}
+
+@media (max-width: 480px) {
+    .image-placeholder {
+        width: 270px;
+        height: 315px;
+        border-radius: 26px;
+    }
+
+    .image-placeholder::before {
+        width: 190px;
+        height: 190px;
+        bottom: 70px;
     }
 }
