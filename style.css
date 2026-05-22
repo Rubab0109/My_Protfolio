@@ -990,3 +990,124 @@ a {
         width: 100%;
     }
 }
+/* ===== Cutout Profile Picture - Professional Creative Look ===== */
+
+.hero-image {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    min-height: 430px;
+}
+
+.image-placeholder {
+    width: 330px;
+    height: 360px;
+    background: rgba(255, 255, 255, 0.35);
+    border-radius: 32px;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    position: relative;
+    backdrop-filter: blur(6px);
+}
+
+/* soft circular design behind the cutout */
+.image-placeholder::before {
+    content: "";
+    position: absolute;
+    width: 280px;
+    height: 280px;
+    bottom: 55px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    border: 2px solid rgba(0, 102, 204, 0.18);
+    box-shadow: 0 0 0 12px rgba(135, 206, 235, 0.10);
+    z-index: 0;
+}
+
+/* small code badge */
+.image-placeholder::after {
+    content: "</>";
+    position: absolute;
+    top: 28px;
+    right: 35px;
+    padding: 8px 14px;
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.85);
+    color: #0066cc;
+    font-size: 0.95rem;
+    font-weight: 700;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    z-index: 3;
+}
+
+/* actual cutout picture */
+.profile-img {
+    position: relative;
+    z-index: 2;
+    height: 200%;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+    object-position: bottom center;
+    display: block;
+    background: transparent;
+    filter:
+        drop-shadow(0 16px 28px rgba(0, 0, 0, 0.18))
+        drop-shadow(0 0 10px rgba(0, 102, 204, 0.12));
+}
+
+/* decorative elements around picture */
+.hero-image::before {
+    content: "";
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    top: 35px;
+    left: 35px;
+    border: 2px dashed rgba(0, 102, 204, 0.25);
+    border-radius: 18px;
+    z-index: 0;
+}
+
+.hero-image::after {
+    content: "";
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #87ceeb;
+    right: 55px;
+    bottom: 80px;
+    box-shadow:
+        -22px -18px 0 #0066cc,
+        18px -28px 0 #b7dcff;
+    z-index: 0;
+}
+
+@media (max-width: 768px) {
+    .hero-image {
+        min-height: 340px;
+    }
+
+    .image-placeholder {
+        width: 280px;
+        height: 320px;
+    }
+
+    .image-placeholder::before {
+        width: 210px;
+        height: 210px;
+        bottom: 45px;
+    }
+
+    .image-placeholder::after {
+        top: 16px;
+        right: 18px;
+        font-size: 0.8rem;
+        padding: 6px 12px;
+    }
+}
